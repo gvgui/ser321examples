@@ -383,7 +383,7 @@ class WebServer {
               builder.append("\n");
               builder.append("The Fruit or Vegetable is: " + head + "<br>");
               builder.append(img);
-              builder.append("<img src=" + img + " style='max-width:500px;max-height:500px' />");
+              builder.append("<img src=" + '"' + img + '"' + " style='max-width:500px;max-height:500px' />");
 
               
             }
@@ -401,7 +401,7 @@ class WebServer {
                 builder.append("Error 404 Not Found: Please input a type - fruit or vegetable");
               }
               else {
-                builder.append("Error 404 Not Found: Please input a color - red, orange, yello, green, blue, or purple");
+                builder.append("Error 404 Not Found: Please input a color - red, orange, yellow, green, blue, or purple");
               }
             }
           }
