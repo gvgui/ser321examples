@@ -293,17 +293,9 @@ class WebServer {
     String[] pairs = query.split("&");
     // ["q=hello+world%2Fme", "bob=5"]
     for (String pair : pairs) {
-      try {
-        int idx = pair.indexOf("=");
-        query_pairs.put(URLDecoder.decode(pair.substring(0, idx), "UTF-8"),
+      int idx = pair.indexOf("=");
+      query_pairs.put(URLDecoder.decode(pair.substring(0, idx), "UTF-8"),
           URLDecoder.decode(pair.substring(idx + 1), "UTF-8"));
-      }
-      catch (StringIndexOutOfBoundsException e) {
-        builder.append("HTTP/1.1 400 Bad Request\n");
-        builder.append("Content-Type: text/html; charset=utf-8\n");
-        builder.append("\n");
-        builder.append("Error: At least two values must be passed.");
-      }
     }
     // {{"q", "hello world/me"}, {"bob","5"}}
     return query_pairs;
