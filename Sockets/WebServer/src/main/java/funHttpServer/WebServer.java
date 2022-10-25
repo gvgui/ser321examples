@@ -341,7 +341,7 @@ class WebServer {
         } else if (request.contains("fruitOrVeg?")) {
 
           Map<String, String> query_pairs = new LinkedHashMap<String, String>();
-          int ind = null;
+          int ind = 0;
           String head = null;
           String img = null;
 
