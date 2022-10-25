@@ -227,6 +227,9 @@ class WebServer {
               }
             }
             catch (StringIndexOutOfBoundsException e) {
+              builder.append("HTTP/1.1 400 Bad Request\n");
+              builder.append("Content-Type: text/html; charset=utf-8\n");
+              builder.append("\n");
               builder.append("Error: Integer values must be passed to both num1 and num2.");
             }
           }
