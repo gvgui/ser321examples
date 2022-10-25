@@ -270,34 +270,25 @@ class WebServer {
               for(int i = 0; i < arr.length(); i++) {
                 JSONObject obj = arr.getJSONObject(i);
                 builder.append("Repo Name: " + obj.get("name"));
+                builder.append("\n");
                 builder.append("ID: " + obj.get("id"));
+                builder.append("\n");
                 builder.append("Login Name: " + obj.getJSONObject("owner").get("login"));
+                builder.append("\n");
               }
 
             }
             catch (Exception e) {
               if(!request.contains("query")) {
-                builder.append("HTTP/1.1 400 Bad Request\n");
-                builder.append("Content-Type: text/html; charset=utf-8\n");
-                builder.append("\n");
                 builder.append("400 Error Bad Request: Please use the syntax - /github?query=users/githubusername/repos");
               }
               else if (!request.contains("users")) {
-                builder.append("HTTP/1.1 400 Bad Request\n");
-                builder.append("Content-Type: text/html; charset=utf-8\n");
-                builder.append("\n");
                 builder.append("400 Error Bad Request: Please include the term 'users' in your request. i.e. /github?query=users/.../...");
               }
               else if (!request.contains("repos")) {
-                builder.append("HTTP/1.1 400 Bad Request\n");
-                builder.append("Content-Type: text/html; charset=utf-8\n");
-                builder.append("\n");
                 builder.append("400 Error Bad Request: Please include the term 'repos' in your request. i.e. /github?query=.../.../repos");
               }
               else {
-                builder.append("HTTP/1.1 400 Bad Request\n");
-                builder.append("Content-Type: text/html; charset=utf-8\n");
-                builder.append("\n");
                 builder.append("400 Error Bad Request: Please use a valid github username in your request. i.e. /github?query=.../githubusername/...");
               }
             }
