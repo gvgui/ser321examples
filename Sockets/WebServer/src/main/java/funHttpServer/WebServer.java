@@ -260,6 +260,12 @@ class WebServer {
               query_pairs = splitQuery(request.replace("github?", ""));
               String json = fetchURL("https://api.github.com/" + query_pairs.get("query"));
               //System.out.println(json);
+              JSONArray arr = new JSONArray(json);
+              for(int i = 0; i < arr.length(); i++) {
+                builder.append("Repo Name: " + arr.getJSONObject(i).getString("name")\n);
+                builder.append("ID: " + arr.getJSONObject(i).getString("id")\n);
+                builder.append("Login Name: " + arr.getJSONObject(i).getJSONObject("owner").getString("login")\n);
+              }
 
               builder.append("HTTP/1.1 200 OK\n");
               builder.append("Content-Type: text/html; charset=utf-8\n");
