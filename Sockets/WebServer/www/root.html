@@ -8,8 +8,11 @@
 			<li><a href="http://3.87.162.240:9000/file/sample.html">/file/sample.html</a> -- returns the content of the file sample.html</li>
 			<li><a href="http://3.87.162.240:9000/json">/json</a> -- returns a json of the /random request</a></li>
 			<li><a href="http://3.87.162.240:9000/random">/random</a> -- returns index.html</a></li>
-			<li>/multiply -- accepts two integers as inputs and returns the product 
+			<li>/multiply -- accepts two integers as inputs and returns the product<br>
 				--- ex: <a href="http://3.87.162.240:9000/multiply?num1=3&num2=4">/multiply?num1=3&num2=4</a></li>
+			<li>/github -- accepts a query and runs it with Github's REST API<br>
+				--- returns the repo name, id, and owner name of each repo<br>
+				--- ex: <a href="http://3.87.162.240:9000/github?query=users/amehlhase316/repos">/github?query=users/amehlhase316/repos</a> </li>
 		</ul>
 		<h3>File Structure in www (you can use /file/www/FILENAME):</h3>
 		${links}
