@@ -383,7 +383,7 @@ class WebServer {
               builder.append("\n");
               builder.append("The Fruit or Vegetable is: " + head + "<br>");
               builder.append(img);
-              builder.append("<img src=" + img + " style='max-width:500px;max-height:500px' />");
+              builder.append("<img src=" + img + " />");
 
               
             }
