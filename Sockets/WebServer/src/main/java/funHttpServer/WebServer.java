@@ -307,7 +307,7 @@ class WebServer {
             // opens the random image page
 
             // open the index.html
-            File file = new File("www/index.html");
+            File file = new File("www/fruitVeggie.html");
 
             // Generate response
             builder.append("HTTP/1.1 200 OK\n");
