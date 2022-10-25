@@ -230,6 +230,12 @@ class WebServer {
               builder.append("\n");
               builder.append("Error: Integer values must be passed to both num1 and num2.");
             }
+            catch (Exception e) {
+              builder.append("HTTP/1.1 400 Bad Request\n");
+              builder.append("Content-Type: text/html; charset=utf-8\n");
+              builder.append("\n");
+              builder.append("Error: Please use the following syntax: multiply?num1=*int*&num2=*int*.");
+            }
           }
           else {
             builder.append("HTTP/1.1 400 Bad Request\n");
