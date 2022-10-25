@@ -224,6 +224,9 @@ class WebServer {
                 builder.append("Error: An integer value must be passed to num2.");
               }
             }
+            catch(ArrayIndexOutOfBoundsException e) {
+              builder.append("Error: Integer values must be passed to both num1 and num2.");
+            }
           }
           else {
             builder.append("HTTP/1.1 400 Bad Request\n");
