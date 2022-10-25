@@ -269,9 +269,9 @@ class WebServer {
               JSONArray arr = new JSONArray(json);
               for(int i = 0; i < arr.length(); i++) {
                 JSONObject obj = arr.getJSONObject(i);
-                builder.append("\n Repo Name: " + obj.get("name") + '\n');
-                builder.append("\n ID: " + obj.get("id") + '\n');
-                builder.append("\n Login Name: " + obj.getJSONObject("owner").get("login"));
+                builder.append("Repo Name: " + obj.get("name").append("\n"));
+                builder.append("ID: " + obj.get("id").append("\n"));
+                builder.append("Login Name: " + obj.getJSONObject("owner").get("login").append("\n"));
               }
 
             }
