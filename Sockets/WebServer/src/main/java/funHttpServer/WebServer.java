@@ -194,28 +194,43 @@ class WebServer {
             builder.append("File not found: " + file);
           }
         } else if (request.contains("multiply?")) {
-          // This multiplies two numbers, there is NO error handling, so when
-          // wrong data is given this just crashes
-
           Map<String, String> query_pairs = new LinkedHashMap<String, String>();
           // extract path parameters
           query_pairs = splitQuery(request.replace("multiply?", ""));
+          int test = 0;
 
-          // extract required fields from parameters
-          Integer num1 = Integer.parseInt(query_pairs.get("num1"));
-          Integer num2 = Integer.parseInt(query_pairs.get("num2"));
-
-          // do math
-          Integer result = num1 * num2;
-
-          // Generate response
-          builder.append("HTTP/1.1 200 OK\n");
-          builder.append("Content-Type: text/html; charset=utf-8\n");
-          builder.append("\n");
-          builder.append("Result is: " + result);
-
-          // TODO: Include error handling here with a correct error code and
-          // a response that makes sense
+          if(request.indexOf("?") > 1) {
+            try {
+              // extract required fields from parameters
+              Integer num1 = Integer.parseInt(query_pairs.get("num1"));
+              test++;
+              Integer num2 = Integer.parseInt(query_pairs.get("num2"));
+              // do math
+              Integer result = num1 * num2;
+              // Generate response
+              builder.append("HTTP/1.1 200 OK\n");
+              builder.append("Content-Type: text/html; charset=utf-8\n");
+              builder.append("\n");
+              builder.append("Result is: " + result);
+            }
+            catch (NumberFormatException e) {
+              builder.append("HTTP/1.1 400 Bad Request\n");
+              builder.append("Content-Type: text/html; charset=utf-8\n");
+              builder.append("\n");
+              if(test == 0) {
+                builder.append("Error: An integer value must be passed to num1.");
+              }
+              else if(test == 1) {
+                builder.append("Error: An integer value must be passed to num2.");
+              }
+            }
+          }
+          else {
+            builder.append("HTTP/1.1 400 Bad Request\n");
+            builder.append("Content-Type: text/html; charset=utf-8\n");
+            builder.append("\n");
+            builder.append("Error: An integer value must be passed to num1 and num2");
+          }
 
         } else if (request.contains("github?")) {
           // pulls the query from the request and runs it with GitHub's REST API
