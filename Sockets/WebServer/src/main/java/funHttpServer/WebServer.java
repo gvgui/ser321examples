@@ -368,12 +368,12 @@ class WebServer {
                 if (color.equalsIgnoreCase("red")) {
                   ind = random.nextInt(red_fruit.size());
                   head = (String) red_fruit.keySet().toArray()[ind];
-                  img = red_fruit.get(head);
+                  img = '"' + red_fruit.get(head) + '"';
                 }
                 else if (color.equalsIgnoreCase("orange")) {
                   ind = random.nextInt(orange_fruit.size());
                   head = (String) orange_fruit.keySet().toArray()[ind];
-                  img = orange_fruit.get(head);
+                  img = '"' + orange_fruit.get(head) + '"';
                 }
               }
 
@@ -383,7 +383,7 @@ class WebServer {
               builder.append("\n");
               builder.append("The Fruit or Vegetable is: " + head + "<br>");
               builder.append(img);
-              builder.append("<img src=" + '"' + img + '"' + " style='max-width:500px;max-height:500px' />");
+              builder.append("<img src=" + img + " style='max-width:500px;max-height:500px' />");
 
               
             }
