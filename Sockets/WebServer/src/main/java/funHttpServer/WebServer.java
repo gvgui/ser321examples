@@ -269,9 +269,9 @@ class WebServer {
               JSONArray arr = new JSONArray(json);
               for(int i = 0; i < arr.length(); i++) {
                 JSONObject obj = arr.getJSONObject(i);
-                builder.append("Repo Name: " + obj.get("name") + "\n");
-                builder.append("ID: " + obj.get("id") + "\n");
-                builder.append("Login Name: " + obj.getJSONObject("owner").get("login") + "\n");
+                builder.append("Repo Name: " + obj.get("name") + '\n');
+                builder.append("ID: " + obj.get("id") + '\n');
+                builder.append("Login Name: " + obj.getJSONObject("owner").get("login") + '\n');
               }
 
             }
@@ -282,9 +282,6 @@ class WebServer {
               builder.append("400 Error Bad Request: Please use the syntax - /github?query=users/githubusername/repos");
             }
             catch (Exception e) {
-              builder.append("HTTP/1.1 400 Bad Request\n");
-              builder.append("Content-Type: text/html; charset=utf-8\n");
-              builder.append("\n");
               if(!request.contains("query")) {
                 builder.append("400 Error Bad Request: Please use the syntax - /github?query=users/githubusername/repos");
               }
