@@ -276,9 +276,15 @@ class WebServer {
 
             }
             catch (StringIndexOutOfBoundsException e) {
+              builder.append("HTTP/1.1 400 Bad Request\n");
+              builder.append("Content-Type: text/html; charset=utf-8\n");
+              builder.append("\n");
               builder.append("400 Error Bad Request: Please use the syntax - /github?query=users/githubusername/repos");
             }
             catch (Exception e) {
+              builder.append("HTTP/1.1 400 Bad Request\n");
+              builder.append("Content-Type: text/html; charset=utf-8\n");
+              builder.append("\n");
               if(!request.contains("query")) {
                 builder.append("400 Error Bad Request: Please use the syntax - /github?query=users/githubusername/repos");
               }
@@ -287,9 +293,6 @@ class WebServer {
               }
               else if (!request.contains("repos")) {
                 builder.append("400 Error Bad Request: Please include the term 'repos' in your request. i.e. /github?query=.../.../repos");
-              }
-              else if(!request.contains("=")) {
-                builder.append("400 Error Bad Request: Please use the syntax - /github?query=users/githubusername/repos");
               }
               else {
                 builder.append("400 Error Bad Request: Please use a valid github username in your request. i.e. /github?query=.../githubusername/...");
