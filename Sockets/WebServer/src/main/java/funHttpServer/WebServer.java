@@ -288,6 +288,9 @@ class WebServer {
               else if (!request.contains("repos")) {
                 builder.append("400 Error Bad Request: Please include the term 'repos' in your request. i.e. /github?query=.../.../repos");
               }
+              else if(!request.contains("=")) {
+                builder.append("400 Error Bad Request: Please use the syntax - /github?query=users/githubusername/repos");
+              }
               else {
                 builder.append("400 Error Bad Request: Please use a valid github username in your request. i.e. /github?query=.../githubusername/...");
               }
