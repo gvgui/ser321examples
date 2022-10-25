@@ -374,15 +374,14 @@ class WebServer {
                 }
               }
 
-              //Response
+              File image = new File(img);
               builder.append("HTTP/1.1 200 OK\n");
-              builder.append("Content-Type: application/json; charset=utf-8\n");
+              builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("\n");
-              builder.append("{");
-              builder.append("\"header\":\"").append(head).append("\",");
-              builder.append("\"image\":\"").append(img).append("\"");
-              builder.append("}");
+              builder.append("The Fruit or Vegetable is: " + head + "<br>");
+              builder.append(new String(readFileInBytes(image)));
 
+              
             }
             catch (StringIndexOutOfBoundsException e) {
               builder.append("HTTP/1.1 400 Bad Request\n");
