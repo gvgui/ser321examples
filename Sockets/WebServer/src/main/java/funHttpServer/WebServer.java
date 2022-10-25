@@ -80,6 +80,44 @@ class WebServer {
     }
   };
 
+  /**
+   * Fruits used for "/fruitOrVeg?"
+   */
+  private final static HashMap<String, String> red_fruit = new HashMap<>() {
+    {
+      put("Apple", "images/fruit/apple.jpeg");
+      put("Raspberry", "images/fruit/raspberry.jpeg");
+      put("Strawberry", "images/fruit/strawberry.jpeg");
+    }
+  };
+
+  private final static HashMap<String, String> orange_fruit = new HashMap<>() {
+    {
+      put("Orange", "images/fruit/orange.jpeg");
+      put("Papaya", "images/fruit/papaya.jpeg");
+      put("Persimmon", "images/fruit/persimmon.jpeg");
+    }
+  };
+
+  /**
+   * Vegetables used for "/fruitOrVeg?"
+   */ 
+  private final static HashMap<String, String> red_veg = new HashMap() {
+    {
+      put("Radish", "images/vegetable/radish.jpeg");
+      put("Red Bell Pepper", "images/vegetable/red_pepper.jpeg");
+      put("Chilli Pepper", "images/vegetable/chilli_pepper.jpeg");
+    }
+  };
+
+  private final static HashMap<String, String> orange_veg = new HashMap() {
+    {
+      put("Orange Bell Pepper", "images/vegetable/orange_pepper.jpeg");
+      put("Carrot", "images/vegetable/carrot.jpeg");
+      put("Pumpkin", "images/vegetable/pumpkin.jpeg");
+    }
+  };
+
   private Random random = new Random();
 
   /**
@@ -300,21 +338,60 @@ class WebServer {
               }
             }
           } 
-        } else if (request.equalsIgnoreCase("fruitOrVeg")) {
-            /**
-             * 
-             **/
-            // opens the random image page
+        } else if (request.contains("fruitOrVeg?")) {
 
-            // open the index.html
-            File file = new File("www/fruitVeggie.html");
+          Map<String, String> query_pairs = new LinkedHashMap<String, String>();
+          int ind;
+          String head;
+          String img;
 
-            // Generate response
-            builder.append("HTTP/1.1 200 OK\n");
-            builder.append("Content-Type: text/html; charset=utf-8\n");
-            builder.append("\n");
-            builder.append(new String(readFileInBytes(file)));
-          } else {
+          if(request.indexOf("?") > 1) {
+            try{
+              query_pairs = splitQuery(request.replace("fruitOrVeg?", ""));
+              String type = query_pairs.get("type");
+              String color = query_pairs.get("color");
+              if (type.equalsIgnoreCase("vegetable")) {
+                if (color.equalsIgnoreCase("red")) {
+                  ind = random.nextInt(red_veg.size());
+                  head = (String) red_veg.keySet().toArray()[ind];
+                  img = red_veg.get(head);
+                }
+                else if (color.equalsIgnoreCase("orange")) {
+                  ind = random.nextInt(orange_veg.size());
+                  head = (String) orange_veg.keySet().toArray()[ind];
+                  img = orange_veg.get(head);
+                }
+              } else if (type.equalsIgnoreCase("fruit")) {
+                if (color.equalsIgnoreCase("red")) {
+                  ind = random.nextInt(red_fruit.size());
+                  head = (String) red_fruit.keySet().toArray()[ind];
+                  img = red_fruit.get(head);
+                }
+                else if (color.equalsIgnoreCase("orange")) {
+                  ind = random.nextInt(orange_fruit.size());
+                  head = (String) orange_fruit.keySet().toArray()[ind];
+                  img = orange_fruit.get(head);
+                }
+              }
+
+              //Response
+              builder.append("HTTP/1.1 200 OK\n");
+              builder.append("Content-Type: application/json; charset=utf-8\n");
+              builder.append("\n");
+              builder.append("{");
+              builder.append("\"header\":\"").append(head).append("\",");
+              builder.append("\"image\":\"").append(img).append("\"");
+              builder.append("}");
+
+            }
+            catch (StringIndexOutOfBoundsException e) {
+              builder.append("HTTP/1.1 400 Bad Request\n");
+              builder.append("Content-Type: text/html; charset=utf-8\n");
+              builder.append("\n");
+              builder.append("Error 400 Bad Request: Please enter a value for type and color. Example /fruitOrVeg?type=fruit&color=red");
+            }
+          }
+        } else {
           // if the request is not recognized at all
 
           builder.append("HTTP/1.1 400 Bad Request\n");
