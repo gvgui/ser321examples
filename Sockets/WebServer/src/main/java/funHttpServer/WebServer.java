@@ -344,6 +344,7 @@ class WebServer {
           int ind = 0;
           String head = null;
           String img = null;
+          int test = 0;
 
           if(request.indexOf("?") > 1) {
             try{
@@ -351,6 +352,7 @@ class WebServer {
               String type = query_pairs.get("type");
               String color = query_pairs.get("color");
               if (type.equalsIgnoreCase("vegetable")) {
+                test++;
                 if (color.equalsIgnoreCase("red")) {
                   ind = random.nextInt(red_veg.size());
                   head = (String) red_veg.keySet().toArray()[ind];
@@ -362,6 +364,7 @@ class WebServer {
                   img = orange_veg.get(head);
                 }
               } else if (type.equalsIgnoreCase("fruit")) {
+                test++;
                 if (color.equalsIgnoreCase("red")) {
                   ind = random.nextInt(red_fruit.size());
                   head = (String) red_fruit.keySet().toArray()[ind];
@@ -379,7 +382,7 @@ class WebServer {
               builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("\n");
               builder.append("The Fruit or Vegetable is: " + head + "<br>");
-              builder.append(new String(readFileInBytes(image)));
+              builder.append("<img src=" + img + " style='max-width:500px;max-height:500px' />");
 
               
             }
@@ -388,6 +391,17 @@ class WebServer {
               builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("\n");
               builder.append("Error 400 Bad Request: Please enter a value for type and color. Example /fruitOrVeg?type=fruit&color=red");
+            }
+            catch (Exception e) {
+              builder.append("HTTP/1.1 404 Not Found\n");
+              builder.append("Content-Type: text/html; charset=utf-8\n");
+              builder.append("\n");
+              if (test == 0) {
+                builder.append("Error 404 Not Found: Please input a type - fruit or vegetable");
+              }
+              else {
+                builder.append("Error 404 Not Found: Please input a color - red, orange, yello, green, blue, or purple");
+              }
             }
           }
         } else {
