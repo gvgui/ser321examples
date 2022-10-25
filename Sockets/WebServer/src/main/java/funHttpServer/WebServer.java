@@ -199,7 +199,7 @@ class WebServer {
           query_pairs = splitQuery(request.replace("multiply?", ""));
           int test = 0;
 
-          if(request.indexOf("?") > 1) {
+          if(request.indexOf("?") > 1 && request.indexOf("?") <= 2) {
             try {
               // extract required fields from parameters
               Integer num1 = Integer.parseInt(query_pairs.get("num1"));
