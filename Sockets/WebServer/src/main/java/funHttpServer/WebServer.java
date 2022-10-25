@@ -275,6 +275,9 @@ class WebServer {
               }
 
             }
+            catch (StringIndexOutOfBoundsException e) {
+              builder.append("400 Error Bad Request: Please use the syntax - /github?query=users/githubusername/repos");
+            }
             catch (Exception e) {
               if(!request.contains("query")) {
                 builder.append("400 Error Bad Request: Please use the syntax - /github?query=users/githubusername/repos");
