@@ -278,7 +278,6 @@ class WebServer {
                 builder.append("\n");
                 builder.append("\n");
               }
-
             }
             catch (StringIndexOutOfBoundsException e) {
               builder.append("HTTP/1.1 400 Bad Request\n");
@@ -300,7 +299,8 @@ class WebServer {
                 builder.append("400 Error Bad Request: Please use a valid github username in your request. i.e. /github?query=.../githubusername/...");
               }
             }
-          } else if (request.equalsIgnoreCase("fruitOrVeg")) {
+          } 
+        } else if (request.equalsIgnoreCase("fruitOrVeg")) {
             /**
              * 
              **/
@@ -314,10 +314,7 @@ class WebServer {
             builder.append("Content-Type: text/html; charset=utf-8\n");
             builder.append("\n");
             builder.append(new String(readFileInBytes(file)));
-          }
-
-
-        } else {
+          } else {
           // if the request is not recognized at all
 
           builder.append("HTTP/1.1 400 Bad Request\n");
