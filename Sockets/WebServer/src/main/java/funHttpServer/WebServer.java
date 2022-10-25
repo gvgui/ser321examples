@@ -207,6 +207,10 @@ class WebServer {
               Integer num2 = Integer.parseInt(query_pairs.get("num2"));
               // do math
               Integer result = num1 * num2;
+              //check string index
+              int begin = 0;
+              int end = -1;
+              request.substring(begin, Math.min(request.length(), end));
               // Generate response
               builder.append("HTTP/1.1 200 OK\n");
               builder.append("Content-Type: text/html; charset=utf-8\n");
@@ -224,7 +228,7 @@ class WebServer {
                 builder.append("Error: An integer value must be passed to num2.");
               }
             }
-            catch(StringIndexOutOfBoundsException e) {
+            catch (StringIndexOutOfBoundsException e) {
               builder.append("Error: Integer values must be passed to both num1 and num2.");
             }
           }
