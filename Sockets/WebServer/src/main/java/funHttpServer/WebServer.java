@@ -208,9 +208,7 @@ class WebServer {
               // do math
               Integer result = num1 * num2;
               //check string index
-              int begin = 0;
-              int end = -1;
-              request.substring(begin, Math.min(request.length(), end));
+              int numb2 = request.charAt(21);
               // Generate response
               builder.append("HTTP/1.1 200 OK\n");
               builder.append("Content-Type: text/html; charset=utf-8\n");
