@@ -313,23 +313,23 @@ class WebServer {
               builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("\n");
               if(test == 0) {
-                builder.append("Error: An integer value must be passed to num1.");
+                builder.append("Error 400 Bad Request: An integer value must be passed to num1.");
               }
               else if(test == 1) {
-                builder.append("Error: An integer value must be passed to num2.");
+                builder.append("Error 400 Bad Request: An integer value must be passed to num2.");
               }
             }
             catch (StringIndexOutOfBoundsException e) {
               builder.append("HTTP/1.1 400 Bad Request\n");
               builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("\n");
-              builder.append("Error: Integer values must be passed to both num1 and num2.");
+              builder.append("Error 400 Bad Request: Integer values must be passed to both num1 and num2.");
             }
             catch (Exception e) {
               builder.append("HTTP/1.1 400 Bad Request\n");
               builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("\n");
-              builder.append("Error: Please use the following syntax: multiply?num1=*int*&num2=*int*.");
+              builder.append("Error 400 Bad Request: Please use the following syntax: multiply?num1=*int*&num2=*int*.");
             }
           }
           else {
@@ -380,16 +380,16 @@ class WebServer {
             }
             catch (Exception e) {
               if(!request.contains("query")) {
-                builder.append("400 Error Bad Request: Please use the syntax - /github?query=users/githubusername/repos");
+                builder.append("Error 400 Bad Request: Please use the syntax - /github?query=users/githubusername/repos");
               }
               else if (!request.contains("users")) {
-                builder.append("400 Error Bad Request: Please include the term 'users' in your request. i.e. /github?query=users/.../...");
+                builder.append("Error 400 Bad Request: Please include the term 'users' in your request. i.e. /github?query=users/.../...");
               }
               else if (!request.contains("repos")) {
-                builder.append("400 Error Bad Request: Please include the term 'repos' in your request. i.e. /github?query=.../.../repos");
+                builder.append("Error 400 Bad Request: Please include the term 'repos' in your request. i.e. /github?query=.../.../repos");
               }
               else {
-                builder.append("400 Error Bad Request: Please use a valid github username in your request. i.e. /github?query=.../githubusername/...");
+                builder.append("Error 400 Bad Request: Please use a valid github username in your request. i.e. /github?query=.../githubusername/...");
               }
             }
           } 
@@ -526,20 +526,14 @@ class WebServer {
               builder.append("HTTP/1.1 400 Bad Request\n");
               builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("\n");
-              builder.append("400 Error Bad Request: Please use the syntax - /github?query=users/githubusername/repos");
+              builder.append("Error 400 Bad Request: Please use the syntax - /bored?participants=1&type=music");
+            }
+            catch (NumberFormatException e) {
+              builder.append("Error 400 Bad Request: Please enter an integer for the amount of participants");
             }
             catch (Exception e) {
-              if(!request.contains("query")) {
-                builder.append("400 Error Bad Request: Please use the syntax - /github?query=users/githubusername/repos");
-              }
-              else if (!request.contains("users")) {
-                builder.append("400 Error Bad Request: Please include the term 'users' in your request. i.e. /github?query=users/.../...");
-              }
-              else if (!request.contains("repos")) {
-                builder.append("400 Error Bad Request: Please include the term 'repos' in your request. i.e. /github?query=.../.../repos");
-              }
-              else {
-                builder.append("400 Error Bad Request: Please use a valid github username in your request. i.e. /github?query=.../githubusername/...");
+              if(!request.contains("type")) {
+                builder.append("Error 400 Bad Request: Please include one of the following types in your query: relaxation, recreational, education, diy, music, cooking");
               }
             }
           } 
