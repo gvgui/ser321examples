@@ -85,17 +85,17 @@ class WebServer {
    */
   private final static HashMap<String, String> red_fruit = new HashMap<>() {
     {
-      put("Apple", "images/fruit/apple.jpeg");
-      put("Raspberry", "images/fruit/raspberry.jpeg");
-      put("Strawberry", "images/fruit/strawberry.jpeg");
+      put("Apple", "fruit/apple.jpeg");
+      put("Raspberry", "fruit/raspberry.jpeg");
+      put("Strawberry", "fruit/strawberry.jpeg");
     }
   };
 
   private final static HashMap<String, String> orange_fruit = new HashMap<>() {
     {
-      put("Orange", "images/fruit/orange.jpeg");
-      put("Papaya", "images/fruit/papaya.jpeg");
-      put("Persimmon", "images/fruit/persimmon.jpeg");
+      put("Orange", "fruit/orange.jpeg");
+      put("Papaya", "fruit/papaya.jpeg");
+      put("Persimmon", "fruit/persimmon.jpeg");
     }
   };
 
@@ -104,17 +104,17 @@ class WebServer {
    */ 
   private final static HashMap<String, String> red_veg = new HashMap() {
     {
-      put("Radish", "images/vegetable/radish.jpeg");
-      put("Red Bell Pepper", "images/vegetable/red_pepper.jpeg");
-      put("Chilli Pepper", "images/vegetable/chilli_pepper.jpeg");
+      put("Radish", "vegetable/radish.jpeg");
+      put("Red Bell Pepper", "vegetable/red_pepper.jpeg");
+      put("Chilli Pepper", "vegetable/chilli_pepper.jpeg");
     }
   };
 
   private final static HashMap<String, String> orange_veg = new HashMap() {
     {
-      put("Orange Bell Pepper", "images/vegetable/orange_pepper.jpeg");
-      put("Carrot", "images/vegetable/carrot.jpeg");
-      put("Pumpkin", "images/vegetable/pumpkin.jpeg");
+      put("Orange Bell Pepper", "vegetable/orange_pepper.jpeg");
+      put("Carrot", "vegetable/carrot.jpeg");
+      put("Pumpkin", "vegetable/pumpkin.jpeg");
     }
   };
 
