@@ -87,7 +87,7 @@ class WebServer {
     {
       put("Apple", "froot/apple.jpeg");
       put("Raspberry", "froot/raspberry.jpeg");
-      put("Strawberry", "froot/strawberry.jpeg");
+      put("Strawberry", "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.bonappetit.com%2Fstory%2Fharrys-berries-strawberries&psig=AOvVaw3Et6pemF53uarZs5TTPX5b&ust=1666830568412000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJCn6_DR_PoCFQAAAAAdAAAAABAE");
     }
   };
 
