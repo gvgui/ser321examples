@@ -85,17 +85,17 @@ class WebServer {
    */
   private final static HashMap<String, String> red_fruit = new HashMap<>() {
     {
-      put("Apple", "froot/apple.jpeg");
-      put("Raspberry", "froot/raspberry.jpeg");
+      put("Apple", "https://www.collinsdictionary.com/images/full/apple_158989157.jpg");
+      put("Raspberry", "https://en.wiktionary.org/wiki/raspberry#/media/File:Raspberry_-_whole_(Rubus_idaeus).jpg");
       put("Strawberry", "https://upload.wikimedia.org/wikipedia/commons/4/4c/Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_single2.jpg");
     }
   };
 
   private final static HashMap<String, String> orange_fruit = new HashMap<>() {
     {
-      put("Orange", "froot/orange.jpeg");
-      put("Papaya", "froot/papaya.jpeg");
-      put("Persimmon", "froot/persimmon.jpeg");
+      put("Orange", "https://i5.peapod.com/c/6H/6HFEA.jpg");
+      put("Papaya", "https://solidstarts.com/wp-content/uploads/Papaya-for-Babies-scaled.jpg");
+      put("Persimmon", "https://solidstarts.com/wp-content/uploads/Persimmon-for-Babies-scaled.jpg");
     }
   };
 
@@ -104,17 +104,17 @@ class WebServer {
    */ 
   private final static HashMap<String, String> red_veg = new HashMap() {
     {
-      put("Radish", "vegetable/radish.jpeg");
-      put("Red Bell Pepper", "vegetable/red_pepper.jpeg");
-      put("Chilli Pepper", "vegetable/chilli_pepper.jpeg");
+      put("Radish", "https://www.highmowingseeds.com/media/catalog/product/cache/6cbdb003cf4aae33b9be8e6a6cf3d7ad/2/8/2850-1.jpg");
+      put("Red Bell Pepper", "https://m.media-amazon.com/images/S/assets.wholefoodsmarket.com/PIE/product/5b34f624e54acd7021de4922_redbellpepper-1.jpg");
+      put("Chilli Pepper", "https://img.freepik.com/premium-vector/red-hot-chili-pepper-realistic-image_98292-2560.jpg");
     }
   };
 
   private final static HashMap<String, String> orange_veg = new HashMap() {
     {
-      put("Orange Bell Pepper", "vegetable/orange_pepper.jpeg");
-      put("Carrot", "vegetable/carrot.jpeg");
-      put("Pumpkin", "vegetable/pumpkin.jpeg");
+      put("Orange Bell Pepper", "https://i5.walmartimages.com/asr/eb1893c6-ff33-4a36-ba05-d7fe42b67fbf.830244cad6037e9c0b18c4c237259b5d.jpeg");
+      put("Carrot", "https://bcfresh.ca/wp-content/uploads/2021/11/Carrots.jpg");
+      put("Pumpkin", "https://solidstarts.com/wp-content/uploads/Pumpkin-for-Babies-scaled.jpg");
     }
   };
 
