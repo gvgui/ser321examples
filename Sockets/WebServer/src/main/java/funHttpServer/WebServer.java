@@ -537,7 +537,7 @@ class WebServer {
               if(!request.contains("type")) {
                 builder.append("Error 400 Bad Request: Please include one of the following types in your query: relaxation, recreational, education, diy, music, cooking");
               }
-              if(obj.get(activity).equals(null)) {
+              if(obj.get("activity").equals(null)) {
                 builder.append("Bored API has no suggestions for you, please try a different number of participants or a different activity type.");
               }
             }
