@@ -85,17 +85,17 @@ class WebServer {
    */
   private final static HashMap<String, String> red_fruit = new HashMap<>() {
     {
-      put("Apple", "fruit/apple.jpeg");
-      put("Raspberry", "fruit/raspberry.jpeg");
-      put("Strawberry", "fruit/strawberry.jpeg");
+      put("Apple", "froot/apple.jpeg");
+      put("Raspberry", "froot/raspberry.jpeg");
+      put("Strawberry", "froot/strawberry.jpeg");
     }
   };
 
   private final static HashMap<String, String> orange_fruit = new HashMap<>() {
     {
-      put("Orange", "fruit/orange.jpeg");
-      put("Papaya", "fruit/papaya.jpeg");
-      put("Persimmon", "fruit/persimmon.jpeg");
+      put("Orange", "froot/orange.jpeg");
+      put("Papaya", "froot/papaya.jpeg");
+      put("Persimmon", "froot/persimmon.jpeg");
     }
   };
 
