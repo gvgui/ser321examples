@@ -149,6 +149,30 @@ class WebServer {
     }
   };
 
+  private final static HashMap<String, String> yellow_veg = new HashMap() {
+    {
+      put("Yellow Squash", "https://solidstarts.com/wp-content/uploads/Summer-Squash-2-scaled.jpg");
+      put("Yellow Bell Pepper", "https://www.producemarketguide.com/sites/default/files/Variety.tar/Variety/yellow-bell-peppers_variety-page.png");
+      put("Corn", "https://images.squarespace-cdn.com/content/v1/55674e06e4b0830d6f6d4322/1434732486611-DVLUQVJXKDZ1VX9N4G5C/sweet+corn.jpg");
+    }
+  };
+
+  private final static HashMap<String, String> green_veg = new HashMap() {
+    {
+      put("Cabbage", "https://www.gardeningknowhow.com/wp-content/uploads/2020/03/primo-vantage-400x350.jpg");
+      put("Broccoli", "https://www.hopkinsmedicine.org/sebin/t/c/broccoli-og.jpg");
+      put("Asparagus", "https://cdn.mos.cms.futurecdn.net/xt4UGjZmzih2tt6NS3Awmd.jpg");
+    }
+  };
+
+  private final static HashMap<String, String> purple_veg = new HashMap() {
+    {
+      put("Eggplant", "https://assets.bonappetit.com/photos/5f23269615fa96522dcee4ee/5:4/w_2460,h_1968,c_limit/Basically-Eggplant.jpg");
+      put("Purple Carrot", "https://www.farmersalmanac.com/wp-content/uploads/2020/11/Purple-carrots-growing-gardening-tips-i121291365.jpeg");
+      put("Beets", "https://www.friendsschoolplantsale.com/sites/default/files/images/variety/V-Beets-BullsBlood-BC.jpg");
+    }
+  };
+
   private Random random = new Random();
 
   /**
@@ -393,6 +417,25 @@ class WebServer {
                   ind = random.nextInt(orange_veg.size());
                   head = (String) orange_veg.keySet().toArray()[ind];
                   img = orange_veg.get(head);
+                }
+                else if (color.equalsIgnoreCase("yellow")) {
+                  ind = random.nextInt(yellow_veg.size());
+                  head = (String) yellow_veg.keySet().toArray()[ind];
+                  img = yellow_veg.get(head);
+                }
+                else if (color.equalsIgnoreCase("green")) {
+                  ind = random.nextInt(green_veg.size());
+                  head = (String) green_veg.keySet().toArray()[ind];
+                  img = green_veg.get(head);
+                }
+                else if (color.equalsIgnoreCase("blue")) {
+                  head = "Blue Corn";
+                  img = "https://www.ediblenm.com/wp-content/uploads/2019/02/A84A5990-web.jpg";
+                }
+                else if (color.equalsIgnoreCase("purple")) {
+                  ind = random.nextInt(purple_veg.size());
+                  head = (String) purple_veg.keySet().toArray()[ind];
+                  img = purple_veg.get(head);
                 }
               } else if (type.equalsIgnoreCase("fruit")) {
                 test++;
