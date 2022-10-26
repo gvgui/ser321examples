@@ -522,7 +522,7 @@ class WebServer {
               builder.append("\n");
               builder.append("Price Approximation: " + obj.get("price"));
               builder.append("\n");
-              err = obj.get("error");
+              err = obj.get("error").toString();
             }
             catch (StringIndexOutOfBoundsException e) {
               builder.append("HTTP/1.1 400 Bad Request\n");
