@@ -502,7 +502,7 @@ class WebServer {
               }
             }
           }
-        } else if (response.contains("bored?")) {
+        } else if (request.contains("bored?")) {
             Map<String, String> query_pairs = new LinkedHashMap<String, String>();
 
             if (request.indexOf("?") > 1) {
