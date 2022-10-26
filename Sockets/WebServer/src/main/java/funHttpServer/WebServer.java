@@ -386,7 +386,7 @@ class WebServer {
               builder.append("The Fruit or Vegetable is: " + head + "<br>");
               builder.append("<img src=").append('"').append(img).append('"').append(" />");
               builder.append("</body>");
-              builder.append("</html");
+              builder.append("</html>");
 
               
             }
