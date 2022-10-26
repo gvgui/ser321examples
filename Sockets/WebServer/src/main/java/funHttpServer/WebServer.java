@@ -504,7 +504,7 @@ class WebServer {
           }
         } else if (request.contains("bored?")) {
             Map<String, String> query_pairs = new LinkedHashMap<String, String>();
-            JSONObject obj;
+            String err = "none";
 
             if (request.indexOf("?") > 1) {
             try {
@@ -517,11 +517,12 @@ class WebServer {
               builder.append("HTTP/1.1 200 OK\n");
               builder.append("Content-Type: application/json; charset=utf-8\n");
               builder.append("\n");
-              obj = new JSONObject(json);
+              JSONObject obj = new JSONObject(json);
               builder.append("Suggestion: " + obj.get("activity"));
               builder.append("\n");
               builder.append("Price Approximation: " + obj.get("price"));
               builder.append("\n");
+              err = obj.get("error");
             }
             catch (StringIndexOutOfBoundsException e) {
               builder.append("HTTP/1.1 400 Bad Request\n");
@@ -536,7 +537,7 @@ class WebServer {
               if(!request.contains("type")) {
                 builder.append("Error 400 Bad Request: Please include one of the following types in your query: relaxation, recreational, education, diy, music, cooking");
               }
-              if(obj.hasOwnProperty('error')) {
+              if(!err.equalsTo("none")) {
                 builder.append("Bored API has no suggestions for you, please try a different number of participants or a different activity type.");
               }
             }
