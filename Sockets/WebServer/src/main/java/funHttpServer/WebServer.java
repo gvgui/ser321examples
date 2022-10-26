@@ -85,17 +85,17 @@ class WebServer {
    */
   private final static HashMap<String, String> red_fruit = new HashMap<>() {
     {
-      put("Apple", "images/fruit/apple.jpg");
-      put("Raspberry", "images/fruit/raspberry.jpg");
-      put("Strawberry", "images/fruit/strawberry.jpg");
+      put("Apple", "images/fruit/apple.jpeg");
+      put("Raspberry", "images/fruit/raspberry.jpeg");
+      put("Strawberry", "images/fruit/strawberry.jpeg");
     }
   };
 
   private final static HashMap<String, String> orange_fruit = new HashMap<>() {
     {
-      put("Orange", "images/fruit/orange.jpg");
-      put("Papaya", "images/fruit/papaya.jpg");
-      put("Persimmon", "images/fruit/persimmon.jpg");
+      put("Orange", "images/fruit/orange.jpeg");
+      put("Papaya", "images/fruit/papaya.jpeg");
+      put("Persimmon", "images/fruit/persimmon.jpeg");
     }
   };
 
@@ -368,12 +368,12 @@ class WebServer {
                 if (color.equalsIgnoreCase("red")) {
                   ind = random.nextInt(red_fruit.size());
                   head = (String) red_fruit.keySet().toArray()[ind];
-                  img = '"' + red_fruit.get(head) + '"';
+                  img = red_fruit.get(head);
                 }
                 else if (color.equalsIgnoreCase("orange")) {
                   ind = random.nextInt(orange_fruit.size());
                   head = (String) orange_fruit.keySet().toArray()[ind];
-                  img = '"' + orange_fruit.get(head) + '"';
+                  img = orange_fruit.get(head);
                 }
               }
 
@@ -382,8 +382,7 @@ class WebServer {
               builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("\n");
               builder.append("The Fruit or Vegetable is: " + head + "<br>");
-              builder.append(img);
-              builder.append("<img src=" + img + " />");
+              builder.append("<img src=").builder.append('"').builder.append(img).builder.append('"').builder.append(" />");
 
               
             }
