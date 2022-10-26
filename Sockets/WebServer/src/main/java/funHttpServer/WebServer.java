@@ -542,7 +542,8 @@ class WebServer {
                 builder.append("400 Error Bad Request: Please use a valid github username in your request. i.e. /github?query=.../githubusername/...");
               }
             }
-        } else {
+          } 
+        }else {
           // if the request is not recognized at all
 
           builder.append("HTTP/1.1 400 Bad Request\n");
