@@ -86,7 +86,7 @@ class WebServer {
   private final static HashMap<String, String> red_fruit = new HashMap<>() {
     {
       put("Apple", "https://www.collinsdictionary.com/images/full/apple_158989157.jpg");
-      put("Raspberry", "https://en.wiktionary.org/wiki/raspberry#/media/File:Raspberry_-_whole_(Rubus_idaeus).jpg");
+      put("Raspberry", "https://cdn.shopify.com/s/files/1/2045/8185/products/3631.jpg");
       put("Strawberry", "https://upload.wikimedia.org/wikipedia/commons/4/4c/Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_single2.jpg");
     }
   };
@@ -98,6 +98,37 @@ class WebServer {
       put("Persimmon", "https://solidstarts.com/wp-content/uploads/Persimmon-for-Babies-scaled.jpg");
     }
   };
+
+  private final static HashMap<String, String> yellow_fruit = new HashMap<>() {
+    {
+      put("Banana", "https://media.npr.org/assets/img/2011/08/19/istock_000017061174small-6ca3bb7c8b6c768b92153932e822623a95065935.jpg");
+      put("Pineapple", "https://www.pamperedchef.com/iceberg/com/product/2416-3-lg.jpg");
+      put("Lemon", "https://149359756.v2.pressablecdn.com/wp-content/uploads/2020/05/Lemon.jpg");
+    }
+  };
+
+  private final static HashMap<String, String> green_fruit = new HashMap<>() {
+    {
+      put("Kiwi", "https://images.seattletimes.com/wp-content/uploads/2018/01/bafe0de4-f002-11e7-ae5a-0e7cb6fd7c60.jpg");
+      put("Pear", "https://www.producemarketguide.com/sites/default/files/Commodities.tar/Commodities/pears_commodity-page.png");
+      put("Green Apple", "https://daganghalal.blob.core.windows.net/27005/Product/1000x1000__greenapple1000x1000-1633937107305.png");
+    }
+  };
+
+  private final static HashMap<String, String> blue_fruit = new HashMap<>() {
+    {
+      put("Blueberry", "https://solidstarts.com/wp-content/uploads/Blueberries_Edited-1-scaled.jpg");
+      put("Blackberry (Close Enough)", "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2022/08/Blackberries-Benefits-121749984-770x533-1.jpg");
+    }
+  };
+  
+  private final static HashMap<String, String> purple_fruit = new HashMap<>() {
+    {
+      put("Grapes", "https://img.freepik.com/premium-vector/isolated-dark-grape-with-green-leaf_317810-1956.jpg");
+      put("Plum", "https://saverafresh.com/wp-content/uploads/2021/08/41d0r45jzQL._AC_SS450_.jpg");
+    }
+  };
+
 
   /**
    * Vegetables used for "/fruitOrVeg?"
@@ -374,6 +405,26 @@ class WebServer {
                   ind = random.nextInt(orange_fruit.size());
                   head = (String) orange_fruit.keySet().toArray()[ind];
                   img = orange_fruit.get(head);
+                }
+                else if (color.equalsIgnoreCase("yellow")) {
+                  ind = random.nextInt(yellow_fruit.size());
+                  head = (String) yellow_fruit.keySet().toArray()[ind];
+                  img = yellow_fruit.get(head);
+                }
+                else if (color.equalsIgnoreCase("green")) {
+                  ind = random.nextInt(green_fruit.size());
+                  head = (String) green_fruit.keySet().toArray()[ind];
+                  img = green_fruit.get(head);
+                }
+                else if (color.equalsIgnoreCase("blue")) {
+                  ind = random.nextInt(blue_fruit.size());
+                  head = (String) blue_fruit.keySet().toArray()[ind];
+                  img = blue_fruit.get(head);
+                }
+                else if (color.equalsIgnoreCase("purple")) {
+                  ind = random.nextInt(purple_fruit.size());
+                  head = (String) purple_fruit.keySet().toArray()[ind];
+                  img = purple_fruit.get(head);
                 }
               }
 
