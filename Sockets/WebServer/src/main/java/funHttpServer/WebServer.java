@@ -502,6 +502,46 @@ class WebServer {
               }
             }
           }
+        } else if (response.contains("bored?")) {
+            Map<String, String> query_pairs = new LinkedHashMap<String, String>();
+
+            if (request.indexOf("?") > 1) {
+            try {
+              query_pairs = splitQuery(request.replace("bored?", ""));
+              Integer participants = Integer.parseInt(query_pairs.get("participants"));
+              String type = query_pairs.get("type");
+              String json = fetchURL("https://www.boredapi.com/api/activity?participants=" + participants + "&type=" + type);
+              //System.out.println(json);
+
+              builder.append("HTTP/1.1 200 OK\n");
+              builder.append("Content-Type: application/json; charset=utf-8\n");
+              builder.append("\n");
+              JSONObject obj = new JSONObject(json);
+              builder.append("Suggestion: " + obj.get("activity"));
+              builder.append("\n");
+              builder.append("Price Approximation: " + obj.get("price"));
+              builder.append("\n");
+            }
+            catch (StringIndexOutOfBoundsException e) {
+              builder.append("HTTP/1.1 400 Bad Request\n");
+              builder.append("Content-Type: text/html; charset=utf-8\n");
+              builder.append("\n");
+              builder.append("400 Error Bad Request: Please use the syntax - /github?query=users/githubusername/repos");
+            }
+            catch (Exception e) {
+              if(!request.contains("query")) {
+                builder.append("400 Error Bad Request: Please use the syntax - /github?query=users/githubusername/repos");
+              }
+              else if (!request.contains("users")) {
+                builder.append("400 Error Bad Request: Please include the term 'users' in your request. i.e. /github?query=users/.../...");
+              }
+              else if (!request.contains("repos")) {
+                builder.append("400 Error Bad Request: Please include the term 'repos' in your request. i.e. /github?query=.../.../repos");
+              }
+              else {
+                builder.append("400 Error Bad Request: Please use a valid github username in your request. i.e. /github?query=.../githubusername/...");
+              }
+            }
         } else {
           // if the request is not recognized at all
 
