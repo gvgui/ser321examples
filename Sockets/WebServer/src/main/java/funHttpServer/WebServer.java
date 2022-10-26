@@ -523,14 +523,14 @@ class WebServer {
               builder.append("\n");
               //err = obj.get("error").toString();
             }
+            catch (NumberFormatException e) {
+              builder.append("Error 400 Bad Request: Please enter an integer for the amount of participants");
+            }
             catch (StringIndexOutOfBoundsException e) {
               builder.append("HTTP/1.1 400 Bad Request\n");
               builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("\n");
               builder.append("Error 400 Bad Request: Please use the syntax - /bored?participants=1&type=music");
-            }
-            catch (NumberFormatException e) {
-              builder.append("Error 400 Bad Request: Please enter an integer for the amount of participants");
             }
             catch (Exception e) {
               if(!request.contains("type")) {
