@@ -381,8 +381,12 @@ class WebServer {
               builder.append("HTTP/1.1 200 OK\n");
               builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("\n");
+              builder.append("<html>");
+              builder.append("<body>");
               builder.append("The Fruit or Vegetable is: " + head + "<br>");
               builder.append("<img src=").append('"').append(img).append('"').append(" />");
+              builder.append("</body>");
+              builder.append("</html");
 
               
             }
